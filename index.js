@@ -1,11 +1,14 @@
 const express=require('express');
 const cors=require('cors')
 const mongoose=require('mongoose');
-
+const env = require('env');
+require('dotenv').config();
 const app=express();
 
 app.use(cors());
 app.use(express.json());
+
+const PORT = process.env.PORT || 3000;
 
 var url_link='mongodb://localhost:27017/new_db';
 
@@ -44,6 +47,6 @@ await newContact.save();
    res.send({messsage:"DATA REPONSE"});
 })
 
-app.listen(8001,()=>{
+app.listen(PORT,()=>{
     console.log('SERVER STARTED AT PORT 8001');
 })
